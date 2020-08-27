@@ -25,25 +25,31 @@ public class Name {
 
     //main method
     public static void main(String[] args) throws IOException {
-//        System.out.println("Enter an option (1, 2, 3, 4 or 5):");
+
+        System.out.println("Welcome to our Contacts Information System");
+        System.out.println("Here are the options you want to work with:");
+        System.out.println("Enter an option (1, 2, 3, 4 or 5):");
+
+        int option;
+//        switch(option)
 //        System.out.println("1.   View contacts. ");
 //        System.out.println("2.   Add a new contact.");
 //        System.out.println("3.   Search a contact by name.");
 //        System.out.println("4.   Delete an existing contact.");
 //        System.out.println("5.   Exit.");
 
-
-// ******************calling all the methods
-
-
 //creating instances of an class
         Name n = new Name();
 
+
+// ******************calling all the methods
+
 // calling all the methods to work
         n.readAll();
-        n.addNewContacts();
-        n.searchContacts();
-        n.deleteContacts();
+//        n.addNewContacts();
+//        n.searchContacts();
+//        n.deleteContacts();
+//        n.exitTheMenu();
 
     }
 
@@ -55,8 +61,8 @@ public class Name {
             List<String> lines = Files.readAllLines(p);
             System.out.println("Name       | Phone number |");
             System.out.println("***************************");
-            for (String line : lines) {
-                System.out.println(line);
+            for (int i = 0; i < lines.size(); i += 1) {
+                System.out.println((i+1) + ". " + lines.get(i));
             }
             System.out.println("_____________");
         } catch (
@@ -66,55 +72,61 @@ public class Name {
     }
 
     //2. Add new contact
-    public void addNewContacts() {
-        try {
-            System.out.println("To add New contacts ");
-            System.out.println("please enter your name  ");
-            String addName = scan.nextLine();
-            System.out.println("please enter your number  ");
-            String addNumber = scan.nextLine();
-            System.out.println("The new contact list will be : \n");
-
-            Files.write(p, Arrays.asList(String.format("%s | %s", addName, addNumber)), StandardOpenOption.APPEND);
-            readAll();
-        } catch (IOException e) {
-            System.out.println("something went wrong");
-        }
-    }
+//    public void addNewContacts() throws IOException {
+//        try {
+//            System.out.println("To add New contacts ");
+//            System.out.println("please enter your name  ");
+//            String addName = scan.nextLine();
+//            System.out.println("please enter your number  ");
+//            String addNumber = scan.nextLine();
+//            System.out.println("The new contact list will be : \n");
+//
+//            Files.write(p, Arrays.asList(String.format("%s | %s |", addName, addNumber)), StandardOpenOption.APPEND);
+//            readAll();
+//        } catch (IOException e) {
+//            System.out.println("something went wrong");
+//        }
+//    }
 
     //3.Search a contact by name
-    public void searchContacts() throws IOException {
-        try {
-            System.out.println("Type name to see the contacts details of a person: ");
-            String searchName = scan.next();
-            List<String> lines = Files.readAllLines(p);
-            for (String line : lines) {
-                if (line.contains(searchName)) {
-                    System.out.println(line);
-                }
-            }
-        } catch (IOException e) {
-            System.out.println(" OOps ! something went wrong");
-        }
-    }
-
-    public void deleteContacts() throws IOException {
-        try {
-            System.out.println("Type name to delete the contacts information of that person:  ");
-            String deleteInfo = scan.next();
-            List<String> lines = Files.readAllLines(p);
-            for (String line : lines) {
-//                if(line.replace(deleteInfo, " ")){
-//
-//
+//    public void searchContacts() throws IOException {
+//        try {
+//            System.out.println("Type name to see the contacts details of a person: ");
+//            String searchName = scan.next();
+//            List<String> lines = Files.readAllLines(p);
+//            for (String line : lines) {
+//                if (line.toLowerCase().contains(searchName.toLowerCase())) {
+//                    System.out.println(line);
 //                }
-            }
-            System.out.println("_____________");
-        } catch (
-                IOException e) {
-            e.printStackTrace();
-        }
+//            }
+//        } catch (IOException e) {
+//            System.out.println(" OOps ! something went wrong");
+//        }
+//    }
 
-    }
+//    public void deleteContacts() throws IOException {
+//        try {
+//            System.out.println("Type name to delete the contacts information of that person:  ");
+//            String deleteInfo = scan.next();
+//            List<String> lines = Files.readAllLines(p);
+//            for (String line : lines) {
+//                if (line.toLowerCase().contains(deleteInfo.toLowerCase())) {
+//                    lines.remove(line);
+//                    break;
+//                }
+//            }
+//            Files.write(p, lines);
+//            readAll();
+//        } catch (IOException e) {
+//            e.printStackTrace();
+//        }
+//    }
+        public void exitTheMenu() throws IOException {
+            System.out.println("Are you sure you want to exit the game\n If yes: enter Y= Yes and N= No ");
+            String exit = scan.next();
+            if(exit.equalsIgnoreCase("Y")) {
+                System.exit(0);
+            }
+        }
 
 }
