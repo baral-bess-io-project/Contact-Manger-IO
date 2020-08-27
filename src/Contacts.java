@@ -8,31 +8,41 @@ import java.util.List;
 import java.util.Scanner;
 
 public class Contacts {
-    private String names;
-    private String phoneNumbers;
+    private String name;
+    private String phoneNumber;
 
     //constructor of class
-    public Contacts(String names, String phoneNumbers) {
-        this.names = names;
-        this.phoneNumbers = phoneNumbers;
+    public Contacts(String name, String phoneNumber) {
+        this.name = name;
+        this.phoneNumber = phoneNumber;
     }
 
 // getter and setter for names, phone numbers
-    public String getNames() {
-        return names;
+    public String getName() {
+        return name;
     }
 
-    public void setNames(String names) {
-        this.names = names;
+    public void setName(String name) {
+        this.name = name;
     }
 
-    public String getPhoneNumbers() {
-        return phoneNumbers;
+    public String getPhoneNumber() {
+        return phoneNumber;
     }
 
-    public void setPhoneNumbers(String phoneNumbers) {
-        this.phoneNumbers = phoneNumbers;
+    public void setPhoneNumber(String phoneNumber) {
+        this.phoneNumber = phoneNumber;
     }
 
+//    public List<Contacts> gatherContacts (Path p) throws IOException {
+////        search through txt.file, init contact object with name and phone number
+//
+//        List<Contacts> allContacts = new ArrayList<>();
+//        List<String> lines = Files.readAllLines(p);
+//        for( String line : lines){
+//            (getName(), getPhoneNumber())
+//        }
+//        return allContacts;
+//    }
 
 }
