@@ -34,15 +34,4 @@ public class Contacts {
         this.phoneNumber = phoneNumber;
     }
 
-//    public List<Contacts> gatherContacts (Path p) throws IOException {
-////        search through txt.file, init contact object with name and phone number
-//
-//        List<Contacts> allContacts = new ArrayList<>();
-//        List<String> lines = Files.readAllLines(p);
-//        for( String line : lines){
-//            (getName(), getPhoneNumber())
-//        }
-//        return allContacts;
-//    }
-
 }

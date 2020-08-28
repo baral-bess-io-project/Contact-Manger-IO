@@ -93,9 +93,9 @@ public class Name {
             String addName = scan.nextLine();
             System.out.println("please enter your number  ");
             String addNumber = scan.nextLine();
+
             //formatting phone number
             String number = addNumber.replaceFirst("(\\d{3})(\\d{3})(\\d+)", "($1)-$2-$3\n");
-           // String.format("|%30s|", "Hello World"); // prints: | Hello World|
 
             System.out.println("The new contact list will be : \n");
             Files.write(p, Arrays.asList(String.format("%-10s | %2s ", addName, number)), StandardOpenOption.APPEND);
@@ -147,7 +147,7 @@ public class Name {
 
     //5. Exit the game/Menu
     public void exitTheMenu() throws IOException {
-        System.out.println("Are you sure to exit the game\n If yes: enter Y= Yes and N= No ");
+        System.out.println("Want to exit the game\n If yes: enter Y= Yes and N= No ");
         String exit = scan.nextLine();
         if (exit.equalsIgnoreCase("Y")) {
             System.exit(0);
