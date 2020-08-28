@@ -73,8 +73,8 @@ public class Name {
     public void readAll() {
         try {
             List<String> lines = Files.readAllLines(p);
-            System.out.println("Name       | Phone number |");
-            System.out.println("***************************");
+            System.out.println("   Name       |  Phone number ");
+            System.out.println("******************************");
             for (int i = 0; i < lines.size(); i += 1) {
                 System.out.println((i + 1) + ". " + lines.get(i));
             }
@@ -107,6 +107,7 @@ public class Name {
 
     //3.Search a contact by name
     public void searchContacts() throws IOException {
+        boolean founder = false;
         try {
             System.out.println("Type name to see the contacts details of a person: ");
             String searchName = scan.nextLine();
@@ -114,7 +115,11 @@ public class Name {
             for (String line : lines) {
                 if (line.toLowerCase().contains(searchName.toLowerCase())) {
                     System.out.println(line);
+                    founder= true;
                 }
+            }
+            if(!founder ){
+                System.out.println("There is no contact with this name:  " + searchName);
             }
         } catch (IOException e) {
             System.out.println(" OOps ! something went wrong");
