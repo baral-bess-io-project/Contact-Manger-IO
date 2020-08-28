@@ -26,40 +26,51 @@ public class Name {
     //main method
     public static void main(String[] args) throws IOException {
 
-        System.out.println("Welcome to our Contacts Information System");
-        System.out.println("Here are the options you want to work with:");
-        System.out.println("*********MENU**************");
-        System.out.println("1.   View contacts. ");
-        System.out.println("2.   Add a new contact.");
-        System.out.println("3.   Search a contact by name.");
-        System.out.println("4.   Delete an existing contact.");
-        System.out.println("5.   Exit.");
-        System.out.println("Enter an option (1, 2, 3, 4 or 5):");
+        boolean again = false;
+        while (true) {
+            System.out.println("Welcome to our Contacts Information System");
+            System.out.println("Here are the options you want to work with:");
+            System.out.println("*********MENU**************");
+            System.out.println("1.   View contacts. ");
+            System.out.println("2.   Add a new contact.");
+            System.out.println("3.   Search a contact by name.");
+            System.out.println("4.   Delete an existing contact.");
+            System.out.println("5.   Exit.");
+            System.out.println("Enter an option (1, 2, 3, 4 or 5):");
 
-        // ******************Calling all the methods using switch statement
-        int selectOption = scan.nextInt();
-        Name n = new Name();
-        switch (selectOption) {
-            case 1:
-                n.readAll();
-                break;
-            case 2:
-                n.addNewContacts();
-                break;
-            case 3:
-                n.searchContacts();
-                break;
-            case 4:
-                n.deleteContacts();
-                break;
-            case 5:
-                n.exitTheMenu();
-                break;
-            default:
-                System.out.println("Please select the options 1-5:");
+            // ******************Calling all the methods using switch statement
+            int selectOption;
+          selectOption =  Integer.parseInt(scan.nextLine());
+            Name n = new Name();
+
+            switch (selectOption) {
+                case 1:
+                    n.readAll();
+                    break;
+                case 2:
+                    n.addNewContacts();
+                    break;
+                case 3:
+                    n.searchContacts();
+                    break;
+                case 4:
+                    n.deleteContacts();
+                    break;
+                case 5:
+                    n.exitTheMenu();
+                    break;
+                default:
+                    System.out.println("Please select the options 1-5:");
+            }
+//            System.out.println("Press y for continue ");
+//            String continueN = scan.nextLine();
+//
+//            if(!continueN.equalsIgnoreCase("y")){
+//                break;
+//            }
+              n.exitTheMenu();
 
         }
-
 
     }
 
@@ -92,7 +103,7 @@ public class Name {
             String addNumber = scan.nextLine();
             System.out.println("The new contact list will be : \n");
 
-            Files.write(p, Arrays.asList(String.format("%s | %s ", addName, addNumber)), StandardOpenOption.APPEND);
+            Files.write(p, Arrays.asList(String.format("%n%s | %s", addName, addNumber)), StandardOpenOption.APPEND);
             readAll();
         } catch (IOException e) {
             System.out.println("something went wrong");
@@ -103,7 +114,7 @@ public class Name {
     public void searchContacts() throws IOException {
         try {
             System.out.println("Type name to see the contacts details of a person: ");
-            String searchName = scan.next();
+            String searchName = scan.nextLine();
             List<String> lines = Files.readAllLines(p);
             for (String line : lines) {
                 if (line.toLowerCase().contains(searchName.toLowerCase())) {
@@ -118,7 +129,7 @@ public class Name {
     public void deleteContacts() throws IOException {
         try {
             System.out.println("Type name to delete the contacts information of that person:  ");
-            String deleteInfo = scan.next();
+            String deleteInfo = scan.nextLine();
             List<String> lines = Files.readAllLines(p);
             for (String line : lines) {
                 if (line.toLowerCase().contains(deleteInfo.toLowerCase())) {
@@ -134,8 +145,8 @@ public class Name {
     }
 
     public void exitTheMenu() throws IOException {
-        System.out.println("Are you sure you want to exit the game\n If yes: enter Y= Yes and N= No ");
-        String exit = scan.next();
+        System.out.println("Are you sure to exit the game\n If yes: enter Y= Yes and N= No ");
+        String exit = scan.nextLine();
         if (exit.equalsIgnoreCase("Y")) {
             System.exit(0);
         }
