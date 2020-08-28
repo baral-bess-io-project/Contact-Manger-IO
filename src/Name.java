@@ -98,7 +98,7 @@ public class Name {
            // String.format("|%30s|", "Hello World"); // prints: | Hello World|
 
             System.out.println("The new contact list will be : \n");
-            Files.write(p, Arrays.asList(String.format("%n%s | %2s ", addName, number)), StandardOpenOption.APPEND);
+            Files.write(p, Arrays.asList(String.format("%-10s | %2s ", addName, number)), StandardOpenOption.APPEND);
             readAll();
         } catch (IOException e) {
             System.out.println("something went wrong");
