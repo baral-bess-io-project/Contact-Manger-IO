@@ -15,7 +15,6 @@ public class Name {
 
     //scanner object
     static Scanner scan = new Scanner(System.in);
-    //public static Name n;
 
     //path for our txt file
     private Path p = Paths.get("./src/contacts.txt").normalize();
@@ -40,7 +39,7 @@ public class Name {
 
             // ******************Calling all the methods using switch statement
             int selectOption;
-          selectOption =  Integer.parseInt(scan.nextLine());
+            selectOption = Integer.parseInt(scan.nextLine());
             Name n = new Name();
 
             switch (selectOption) {
@@ -62,14 +61,7 @@ public class Name {
                 default:
                     System.out.println("Please select the options 1-5:");
             }
-//            System.out.println("Press y for continue ");
-//            String continueN = scan.nextLine();
-//
-//            if(!continueN.equalsIgnoreCase("y")){
-//                break;
-//            }
-              n.exitTheMenu();
-
+            n.exitTheMenu();
         }
 
     }
@@ -101,9 +93,12 @@ public class Name {
             String addName = scan.nextLine();
             System.out.println("please enter your number  ");
             String addNumber = scan.nextLine();
-            System.out.println("The new contact list will be : \n");
+            //formatting phone number
+            String number = addNumber.replaceFirst("(\\d{3})(\\d{3})(\\d+)", "($1)-$2-$3\n");
+           // String.format("|%30s|", "Hello World"); // prints: | Hello World|
 
-            Files.write(p, Arrays.asList(String.format("%n%s | %s", addName, addNumber)), StandardOpenOption.APPEND);
+            System.out.println("The new contact list will be : \n");
+            Files.write(p, Arrays.asList(String.format("%n%s | %2s ", addName, number)), StandardOpenOption.APPEND);
             readAll();
         } catch (IOException e) {
             System.out.println("something went wrong");
@@ -126,6 +121,7 @@ public class Name {
         }
     }
 
+    //4.Deleting ExistingContacts
     public void deleteContacts() throws IOException {
         try {
             System.out.println("Type name to delete the contacts information of that person:  ");
@@ -144,6 +140,7 @@ public class Name {
         }
     }
 
+    //5. Exit the game/Menu
     public void exitTheMenu() throws IOException {
         System.out.println("Are you sure to exit the game\n If yes: enter Y= Yes and N= No ");
         String exit = scan.nextLine();
