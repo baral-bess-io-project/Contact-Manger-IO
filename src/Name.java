@@ -26,7 +26,7 @@ public class Name {
 
         boolean again = false;
         while (true) {
-            System.out.println("Welcome to our Contacts Information System");
+            System.out.println("\nWelcome to our Contacts Information System");
             System.out.println("Here are the options you want to work with:");
             System.out.println("*********MENU**************");
             System.out.println("1.   View contacts. ");
@@ -88,9 +88,9 @@ public class Name {
     public void addNewContacts() throws IOException {
         try {
             System.out.println("To add New contacts ");
-            System.out.println("please enter your name  ");
+            System.out.println("please enter the name  ");
             String addName = scan.nextLine();
-            System.out.println("please enter your number  ");
+            System.out.println("please enter the number  ");
             String addNumber = scan.nextLine();
 
             //formatting phone number
@@ -149,6 +149,7 @@ public class Name {
         System.out.println("Want to exit the game\n If yes: enter Y= Yes and N= No ");
         String exit = scan.nextLine();
         if (exit.equalsIgnoreCase("Y")) {
+            System.out.println("Thank you for playing, Have a good day! BYE!");
             System.exit(0);
         }
     }
