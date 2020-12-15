@@ -10,8 +10,7 @@ import java.util.Scanner;
 public class Name {
 
     //default constructor
-    public Name() {
-    }
+    public Name() {}
 
     //scanner object
     static Scanner scan = new Scanner(System.in);
